@@ -1,0 +1,94 @@
+/* src/components/layout/layout.css */
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  background: var(--header-bg);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  height: 64px;
+  line-height: 64px;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.app-content {
+  padding: 24px;
+  flex: 1;
+  background-color: var(--content-bg);
+}
+
+.content-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  animation: fadeIn 0.3s ease;
+}
+
+.app-footer {
+  background: var(--footer-bg);
+  padding: 24px;
+}
+
+.header-logo {
+  height: 2.5rem;
+}
+
+/* Animasyonlar */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card ve diğer bileşenler için geçiş efektleri */
+.ant-card,
+.ant-form,
+.ant-steps,
+.ant-table {
+  transition: all 0.3s ease;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .app-header {
+    padding: 0 16px;
+  }
+  
+  .app-content {
+    padding: 16px;
+  }
+  
+  .content-container {
+    padding: 0;
+  }
+  
+  .wizard-container {
+    padding: 16px 0;
+  }
+}
+
+/* Tema özelleştirilmesi için CSS değişkenleri */
+:root {
+  --header-bg: #ffffff;
+  --content-bg: #f5f5f5;
+  --footer-bg: #ffffff;
+  --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Koyu tema için değişkenler */
+[data-theme='dark'] {
+  --header-bg: #1f2937;
+  --content-bg: #0f172a;
+  --footer-bg: #1f2937;
+  --card-shadow: 0 1px 3px 0 rgba(255, 255, 255, 0.05);
+}

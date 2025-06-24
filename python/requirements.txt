@@ -1,0 +1,27 @@
+# Core FastAPI dependencies
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+
+# CORS support
+python-multipart==0.0.6
+
+# Machine Learning and NLP
+sentence-transformers==2.2.2
+numpy==1.24.3
+torch==2.0.1
+
+# Word Document Generation
+python-docx==0.8.11
+
+# Optional: Database support (if using MongoDB)
+pymongo==4.6.0
+motor==3.3.2
+
+# Email support
+aiosmtplib==3.0.1
+email-validator==2.1.0
+
+# Development and testing
+pytest==7.4.3
+requests==2.31.0
