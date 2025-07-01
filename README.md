@@ -1,193 +1,233 @@
-# Semantic Similarity Based Course Exemption System
+# University Course Exemption System
 
-A comprehensive web application that automates the course exemption process for universities using semantic similarity analysis. The system allows students to upload their transcripts and automatically matches their completed courses with internal university courses based on content similarity.
+A comprehensive web application for automating university course exemption applications using AI-powered semantic similarity analysis. This system helps students match their external courses with internal university courses and generates professional exemption documents automatically.
 
-## 🚀 Features
+## 🎯 Project Overview
 
-- **PDF Transcript Processing**: Upload and extract course information from PDF transcripts
-- **Semantic Similarity Matching**: Uses state-of-the-art NLP models to match courses based on content similarity
-- **Interactive Web Interface**: Modern React-based frontend with step-by-step wizard
-- **Automated Document Generation**: Generates official exemption petition documents in Word format
-- **Email Integration**: Automated email delivery of generated documents
-- **Manual Course Entry**: Option to manually add courses if needed
-- **Real-time Progress Tracking**: Visual feedback throughout the process
+This graduation project (bitirme ödevi) is a full-stack application that streamlines the course exemption process for university students. The system uses advanced Natural Language Processing (NLP) to analyze course content similarities and provides an intuitive wizard-based interface for students to apply for course exemptions.
 
-## 🏗️ Architecture
+### Key Features
 
-### Backend (Python/Flask)
-- **Flask API**: RESTful API for course matching and document generation
-- **Sentence Transformers**: `all-MiniLM-L6-v2` model for semantic similarity
-- **PDF Processing**: Extract course information from transcript PDFs
-- **Word Document Generation**: Create official petition documents
-- **Email Service**: SMTP integration for document delivery
+- **🤖 AI-Powered Course Matching**: Uses Sentence Transformers (all-MiniLM-L6-v2) for semantic similarity analysis
+- **📄 PDF Transcript Parsing**: Automatic extraction of course information from PDF transcripts
+- **📋 Document Generation**: Automated generation of professional exemption applications in Word format
+- **📧 Email Integration**: Direct email sending of exemption documents to university departments
+- **🎨 Modern UI**: React-based responsive interface with Ant Design components
+- **📊 Interactive Wizard**: Step-by-step guided process for exemption applications
+- **🔍 Manual Course Entry**: Option to manually add courses not found in transcripts
+- **📈 Real-time Similarity Analysis**: Live matching scores and recommendations
 
-### Frontend (React/Vite)
-- **Modern React**: Built with Vite for fast development
-- **Material-UI Components**: Professional UI components
-- **State Management**: Redux for application state
-- **File Upload**: Drag-and-drop PDF upload functionality
-- **Responsive Design**: Works on desktop and mobile devices
+## 🏗️ System Architecture
 
-## 📋 Prerequisites
+### Backend (Python - FastAPI)
+- **Framework**: FastAPI with async support
+- **AI/ML**: Sentence Transformers for semantic similarity
+- **Document Processing**: python-docx for Word document generation
+- **Email Service**: SMTP integration for automated email sending
+- **Data Storage**: JSON-based course repository with optional MongoDB support
+- **File Processing**: PDF parsing and file upload handling
 
-- Python 3.8+
-- Node.js 16+
-- npm or yarn
-
-## 🔧 Installation
-
-### Backend Setup
-
-1. Navigate to the Python directory:
-```bash
-cd python
-```
-
-2. Create a virtual environment:
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-3. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-4. Create environment configuration:
-```bash
-cp .env.example .env
-```
-
-5. Edit `.env` file with your configuration:
-```env
-MODEL_NAME=all-MiniLM-L6-v2
-DEFAULT_THRESHOLD=0.80
-
-# Gmail SMTP Configuration
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USERNAME=your_email@gmail.com
-SMTP_PASSWORD=your_app_password
-
-FROM_EMAIL=your_email@gmail.com
-
-# Development Settings
-DEBUG=true
-EMAIL_DEMO_MODE=false
-```
-
-### Frontend Setup
-
-1. Navigate to the React directory:
-```bash
-cd react-front
-```
-
-2. Install dependencies:
-```bash
-npm install
-# or
-yarn install
-```
-
-3. Create environment configuration:
-```bash
-cp .env.example .env
-```
-
-## 🚀 Running the Application
-
-### Start Backend Server
-```bash
-cd python
-python app/main.py
-```
-The API will be available at `http://localhost:5000`
-
-### Start Frontend Development Server
-```bash
-cd react-front
-npm run dev
-# or
-yarn dev
-```
-The web application will be available at `http://localhost:5173`
-
-## 📝 API Endpoints
-
-### Course Matching
-- `POST /api/match-courses` - Match external courses with internal courses
-- `POST /api/upload-transcript` - Upload and process PDF transcript
-- `GET /api/internal-courses` - Get list of internal university courses
-
-### Document Generation
-- `POST /api/generate-exemption-document` - Generate exemption petition document
-- `POST /api/send-document-email` - Send generated document via email
-
-## 🎯 Usage
-
-1. **Upload Transcript**: Start by uploading your PDF transcript
-2. **Review Extracted Courses**: Check automatically extracted course information
-3. **Course Matching**: System automatically matches courses using semantic similarity
-4. **Manual Adjustments**: Add or modify courses as needed
-5. **Generate Document**: Create official exemption petition document
-6. **Email Delivery**: Receive the document via email
-
-## 🔬 Semantic Similarity Model
-
-The system uses the `all-MiniLM-L6-v2` sentence transformer model which:
-- Converts course descriptions into 384-dimensional embeddings
-- Calculates cosine similarity between course contents
-- Provides configurable similarity threshold (default: 0.80)
-- Handles Turkish language course descriptions effectively
-
-## 📊 Course Matching Algorithm
-
-1. **Text Preprocessing**: Clean and normalize course descriptions
-2. **Embedding Generation**: Convert descriptions to numerical vectors
-3. **Similarity Calculation**: Compute cosine similarity scores
-4. **Threshold Filtering**: Filter matches above configured threshold
-5. **Ranking**: Sort matches by similarity score
-
-## 🛠️ Configuration
-
-### Email Setup
-For Gmail SMTP, you need to:
-1. Enable 2-factor authentication
-2. Generate an app-specific password
-3. Use the app password in the configuration
-
-See `GMAIL_SETUP.md` for detailed instructions.
-
-### Model Configuration
-- `MODEL_NAME`: Sentence transformer model name
-- `DEFAULT_THRESHOLD`: Minimum similarity score for matches
-- `DEBUG`: Enable debug mode for development
+### Frontend (React)
+- **Framework**: React 19 with React Router
+- **UI Library**: Ant Design v5
+- **State Management**: Redux Toolkit
+- **Form Handling**: React Hook Form with Zod validation
+- **PDF Processing**: PDF.js for client-side PDF parsing
+- **Build Tool**: Vite for fast development and building
 
 ## 📁 Project Structure
 
 ```
-├── python/                 # Backend application
-│   ├── app/               # Flask application
-│   │   ├── main.py       # Main Flask app
-│   │   ├── models.py     # Data models
-│   │   ├── services.py   # Business logic
-│   │   └── repository.py # Data access layer
-│   ├── templates/         # HTML templates
-│   ├── requirements.txt   # Python dependencies
-│   └── .env.example      # Environment template
-├── react-front/          # Frontend application
+├── python/                     # Backend API
+│   ├── app/                   # Main application package
+│   │   ├── main.py           # FastAPI application entry point
+│   │   ├── models.py         # Pydantic data models
+│   │   ├── services.py       # Business logic services
+│   │   ├── repository.py     # Data access layer
+│   │   └── email_service.py  # Email functionality
+│   ├── requirements.txt      # Python dependencies
+│   ├── internal_courses.json # University course database
+│   └── output/              # Generated documents
+├── react-front/              # Frontend application
 │   ├── src/
-│   │   ├── components/   # React components
-│   │   ├── contexts/     # React contexts
-│   │   ├── hooks/        # Custom hooks
-│   │   ├── redux/        # State management
-│   │   └── services/     # API services
-│   ├── package.json      # Node.js dependencies
-│   └── .env.example      # Environment template
-└── README.md             # This file
+│   │   ├── components/       # React components
+│   │   │   ├── wizard/      # Multi-step wizard components
+│   │   │   ├── layout/      # Layout components
+│   │   │   └── common/      # Shared components
+│   │   ├── contexts/        # React contexts
+│   │   ├── redux/           # State management
+│   │   ├── services/        # API services
+│   │   └── utils/           # Utility functions
+│   └── package.json         # Node.js dependencies
+└── README.md               # This file
 ```
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Python 3.8+** with pip
+- **Node.js 16+** with npm
+- **Git** for version control
+
+### Backend Setup
+
+1. **Navigate to the Python directory:**
+   ```bash
+   cd python
+   ```
+
+2. **Create a virtual environment:**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Set up environment variables:**
+   Create a `.env` file in the python directory:
+   ```env
+   DEFAULT_THRESHOLD=0.80
+   MODEL_NAME=all-MiniLM-L6-v2
+   MONGO_URI=mongodb://localhost:27017  # Optional
+   SMTP_SERVER=smtp.gmail.com
+   SMTP_PORT=587
+   SMTP_USERNAME=your-email@gmail.com
+   SMTP_PASSWORD=your-app-password
+   ```
+
+5. **Run the backend server:**
+   ```bash
+   uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+   ```
+
+### Frontend Setup
+
+1. **Navigate to the React directory:**
+   ```bash
+   cd react-front
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+
+4. **Access the application:**
+   Open your browser to `http://localhost:5173`
+
+## 🔧 API Endpoints
+
+### Course Matching
+- `POST /auto-match` - Semantic similarity analysis for course matching
+- `GET /internal-courses` - Retrieve internal university courses
+
+### Document Generation
+- `POST /generate-pdf` - Generate exemption application document
+- `GET /download/{filename}` - Download generated documents
+
+### Email Services
+- `POST /send-email` - Send exemption documents via email
+
+### Health Check
+- `GET /health` - API health status
+
+## 🎮 How to Use
+
+### For Students
+
+1. **Start the Wizard**: Access the application and begin the exemption process
+2. **Upload Transcript**: Upload your PDF transcript for automatic course extraction
+3. **Add Course Contents**: Provide detailed content descriptions for your courses
+4. **Review Matches**: Examine AI-generated similarity scores and select exemptions
+5. **Enter Personal Info**: Fill in your student and contact information
+6. **Generate Document**: Create professional exemption application
+7. **Submit Application**: Email the document directly to the university department
+
+### For Developers
+
+1. **Add New Courses**: Update `internal_courses.json` with new university courses
+2. **Customize Templates**: Modify Word document templates in the services
+3. **Adjust AI Models**: Change similarity thresholds and models in configuration
+4. **Extend API**: Add new endpoints in the FastAPI application
+
+## 🧠 AI/ML Components
+
+### Semantic Similarity Engine
+- **Model**: all-MiniLM-L6-v2 Sentence Transformer
+- **Purpose**: Compares course content descriptions for similarity matching
+- **Threshold**: Configurable similarity threshold (default: 80%)
+- **Performance**: Optimized for educational content analysis
+
+### Course Content Analysis
+- **Text Processing**: Advanced NLP preprocessing for course descriptions
+- **Similarity Scoring**: Cosine similarity between course embeddings
+- **Ranking System**: Automatic ranking of potential matches
+
+## 📧 Email Integration
+
+The system includes automated email functionality to send exemption documents:
+
+- **SMTP Configuration**: Support for major email providers
+- **Attachment Handling**: Automatic attachment of generated documents
+- **Template System**: Customizable email templates
+- **Error Handling**: Robust error handling for email delivery
+
+## 🛠️ Configuration
+
+### Backend Configuration (`.env`)
+```env
+# AI Model Settings
+DEFAULT_THRESHOLD=0.80          # Similarity threshold (0.0-1.0)
+MODEL_NAME=all-MiniLM-L6-v2    # Sentence transformer model
+
+# Database Settings
+MONGO_URI=mongodb://localhost:27017  # Optional MongoDB connection
+
+# Email Settings
+SMTP_SERVER=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USERNAME=your-email@gmail.com
+SMTP_PASSWORD=your-app-password
+```
+
+### Frontend Configuration
+The frontend automatically detects the backend API URL and adjusts for development/production environments.
+
+## 🧪 Testing
+
+### Backend Tests
+```bash
+cd python
+pytest test_*.py
+```
+
+### Frontend Tests
+```bash
+cd react-front
+npm run test
+```
+
+## 📦 Deployment
+
+### Backend Deployment
+1. **Production Server**: Use Gunicorn or similar WSGI server
+2. **Docker**: Container-ready with environment variables
+3. **Cloud**: Compatible with AWS, Google Cloud, Azure
+
+### Frontend Deployment
+1. **Build**: `npm run build`
+2. **Static Hosting**: Deploy to Netlify, Vercel, or similar
+3. **CDN**: Optimized for content delivery networks
 
 ## 🤝 Contributing
 
@@ -199,19 +239,31 @@ See `GMAIL_SETUP.md` for detailed instructions.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is a graduation thesis (bitirme ödevi) and is intended for educational purposes.
 
-## 🙋‍♂️ Support
+## 👨‍💻 Author
 
-If you have any questions or need help with setup, please open an issue or contact the development team.
+**Memet Emin Öztürk**
+- Student Number: 2021123087
+- University: Sivas Cumhuriyet Üniversitesi
+- Department: Bilgisayar Mühendisliği
+- Email: 2021123087@cumhuriyet.edu.tr
 
-## 🔮 Future Enhancements
+## 🙏 Acknowledgments
 
-- [ ] Support for multiple languages
-- [ ] Advanced PDF parsing for complex layouts
-- [ ] Integration with university information systems
-- [ ] Batch processing for multiple transcripts
-- [ ] Machine learning model fine-tuning
-- [ ] Mobile application
-- [ ] API rate limiting and authentication
-- [ ] Advanced analytics and reporting
+- **Sivas Cumhuriyet University** - Computer Engineering Department
+- **Sentence Transformers** - For providing excellent NLP models
+- **FastAPI Community** - For the amazing web framework
+- **React Team** - For the powerful frontend library
+- **Ant Design** - For the beautiful UI components
+
+## 📞 Support
+
+For questions or support regarding this project:
+- Email: 2021123087@cumhuriyet.edu.tr
+- Create an issue in this repository
+- Contact the Computer Engineering Department
+
+---
+
+**Note**: This is a graduation project (bitirme ödevi) developed as part of the Computer Engineering program at Sivas Cumhuriyet University. The system is designed to demonstrate modern web development practices, AI integration, and practical problem-solving in educational technology.
