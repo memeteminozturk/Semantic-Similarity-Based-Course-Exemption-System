@@ -101,7 +101,6 @@ output/
 *.sublime-workspace
 
 # Document outputs that might contain sensitive data
-*.docx
 *.doc
 *.pdf
 
