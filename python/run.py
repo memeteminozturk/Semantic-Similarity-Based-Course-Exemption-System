@@ -1,6 +1,7 @@
 """
 Starter script for the Auto Match API application
 """
+
 import uvicorn
 
 if __name__ == "__main__":
