@@ -14,13 +14,13 @@ const { Title, Text } = Typography;
  * @param {React.ReactNode} icon - Kart ikonu
  * @param {string} type - Kart tipi (default, success, warning, error)
  */
-export default function ActionCard({ 
-  title, 
-  description, 
-  buttonText = "Başla", 
-  onClick, 
-  icon, 
-  type = "default" 
+export default function ActionCard({
+  title,
+  description,
+  buttonText = 'Başla',
+  onClick,
+  icon,
+  type = 'default',
 }) {
   // Kart tipi bazında renkler
   const colors = {
@@ -28,28 +28,30 @@ export default function ActionCard({
     success: { border: '#d1fae5', background: '#f0fdf4' },
     warning: { border: '#fef3c7', background: '#fffbeb' },
     error: { border: '#fee2e2', background: '#fef2f2' },
-    info: { border: '#dbeafe', background: '#eff6ff' }
+    info: { border: '#dbeafe', background: '#eff6ff' },
   };
-  
+
   return (
-    <Card 
+    <Card
       hoverable
       className="fade-in"
-      style={{ 
+      style={{
         borderColor: colors[type].border,
-        backgroundColor: colors[type].background
+        backgroundColor: colors[type].background,
       }}
     >
       <Space direction="vertical" size="middle" style={{ width: '100%' }}>
         <Space align="start">
           {icon && <div>{icon}</div>}
           <div>
-            <Title level={4} style={{ marginTop: 0, marginBottom: 8 }}>{title}</Title>
+            <Title level={4} style={{ marginTop: 0, marginBottom: 8 }}>
+              {title}
+            </Title>
             <Text type="secondary">{description}</Text>
           </div>
         </Space>
-        
-        <Button 
+
+        <Button
           type={type === 'default' ? 'primary' : type}
           onClick={onClick}
           icon={<RightOutlined />}

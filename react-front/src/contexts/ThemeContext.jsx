@@ -10,9 +10,11 @@ export const ThemeProvider = ({ children }) => {
     if (savedTheme) {
       return savedTheme;
     }
-    
+
     // Sistem tercihini kontrol et
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
   };
 
   const [theme, setTheme] = useState(getInitialTheme);

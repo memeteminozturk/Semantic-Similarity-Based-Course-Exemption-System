@@ -13,7 +13,7 @@ const colors = {
   light: '#f3f4f6',
   dark: '#1f2937',
   text: '#374151',
-  textLight: '#9ca3af'
+  textLight: '#9ca3af',
 };
 
 // Hem açık hem de koyu tema için token konfigürasyonları
@@ -21,14 +21,15 @@ const getThemeTokens = (isDark = false) => ({
   colorPrimary: colors.primary,
   colorInfo: colors.info,
   colorSuccess: colors.success,
-  colorWarning: colors.warning, 
+  colorWarning: colors.warning,
   colorError: colors.error,
   colorTextBase: isDark ? '#ffffff' : colors.text,
   colorBgBase: isDark ? '#121212' : '#ffffff',
   borderRadius: 8,
   wireframe: false,
   fontSize: 14,
-  fontFamily: "'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+  fontFamily:
+    "'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
 });
 
 // Koyu tema konfigürasyonu
@@ -46,9 +47,9 @@ const darkTheme = {
       colorBgContainer: '#1f2937',
     },
     Typography: {
-      colorText: '#e5e7eb'
-    }
-  }
+      colorText: '#e5e7eb',
+    },
+  },
 };
 
 // Açık tema konfigürasyonu (varsayılan)
@@ -60,9 +61,10 @@ const lightTheme = {
       colorPrimaryHover: colors.secondary,
     },
     Card: {
-      boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)'
-    }
-  }
+      boxShadow:
+        '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
+    },
+  },
 };
 
 export { lightTheme, darkTheme, colors };

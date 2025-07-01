@@ -3,195 +3,227 @@
 // List of available internal courses for exemption requests
 export const INTERNAL_COURSES = [
   {
-    "code": "UATA1001",
-    "name": "Atatürk İlkeleri ve İnkılap Tarihi - I",
-    "credits": "2-2-3",
-    "content": "Osmanlı İmparatorluğu’nun yıkılışı ve Türk inkılabını hazırlayan sebepler, Mustafa Kemal Paşa’nın Samsun’a çıkışı, Kongreler yolu ile teşkilatlanma, Türkiye Büyük Millet Meclisi’nin açılışı, İstiklal Savaşı ve Lozan Barış Antlaşması."
+    code: 'UATA1001',
+    name: 'Atatürk İlkeleri ve İnkılap Tarihi - I',
+    credits: '2-2-3',
+    content:
+      'Osmanlı İmparatorluğu’nun yıkılışı ve Türk inkılabını hazırlayan sebepler, Mustafa Kemal Paşa’nın Samsun’a çıkışı, Kongreler yolu ile teşkilatlanma, Türkiye Büyük Millet Meclisi’nin açılışı, İstiklal Savaşı ve Lozan Barış Antlaşması.',
   },
   {
-    "code": "BIL1003",
-    "name": "Bilgisayar Bilimlerine Giriş",
-    "credits": "2-2-4",
-    "content": "Bilgisayar Ölçü Birimleri, Temel Kavramlar, Boole Cebri, Algoritma ve Akış Şemaları, Programlama Dilleri, İşletim Sistemleri, Mikroişlemciler ve Assembly Programlama, Bilgisayar Ağları ve İnternet Teknolojileri, Sayı ve Kodlama Sistemleri, Yazılım Mühendisliği, Veri Yapıları ve Veri Modelleri, Veritabanı Yönetimi ve SQL, Donanım Mühendisliği, Yazılım Modelleme, Ayrık Matematiğin Temelleri."
+    code: 'BIL1003',
+    name: 'Bilgisayar Bilimlerine Giriş',
+    credits: '2-2-4',
+    content:
+      'Bilgisayar Ölçü Birimleri, Temel Kavramlar, Boole Cebri, Algoritma ve Akış Şemaları, Programlama Dilleri, İşletim Sistemleri, Mikroişlemciler ve Assembly Programlama, Bilgisayar Ağları ve İnternet Teknolojileri, Sayı ve Kodlama Sistemleri, Yazılım Mühendisliği, Veri Yapıları ve Veri Modelleri, Veritabanı Yönetimi ve SQL, Donanım Mühendisliği, Yazılım Modelleme, Ayrık Matematiğin Temelleri.',
   },
   {
-    "code": "BIL1201",
-    "name": "Algoritmalar ve Programlama",
-    "credits": "4-3.5-6",
-    "content": "Algoritma Kavramı, Algoritma ve Algoritmik Düşünme, Algoritma Yapısı ve Problem Çözüm Aşamaları, Algoritma Örnekleri, Akış Şemaları ve örnekleri, Java Programlama Dili, Eclipse IDE Kurulumu ve Kullanımı, Java Terminolojisi, Sözdizimi ve Anlamsal Hatalar, Doğru ve iyi program yazma kuralları, Java program şablonları, Temel değişken türleri, Operatörler, Akış kontrol yapıları, Döngüler, Break ve Continue, Özyineleme, Örnek uygulamalar."
+    code: 'BIL1201',
+    name: 'Algoritmalar ve Programlama',
+    credits: '4-3.5-6',
+    content:
+      'Algoritma Kavramı, Algoritma ve Algoritmik Düşünme, Algoritma Yapısı ve Problem Çözüm Aşamaları, Algoritma Örnekleri, Akış Şemaları ve örnekleri, Java Programlama Dili, Eclipse IDE Kurulumu ve Kullanımı, Java Terminolojisi, Sözdizimi ve Anlamsal Hatalar, Doğru ve iyi program yazma kuralları, Java program şablonları, Temel değişken türleri, Operatörler, Akış kontrol yapıları, Döngüler, Break ve Continue, Özyineleme, Örnek uygulamalar.',
   },
   {
-    "code": "BIL1202",
-    "name": "Nesne Tabanlı Programlama",
-    "credits": "4-3.5-6",
-    "content": "Dışarıdan Veri Girişi, Statik ve Dinamik Metodlar, Matematik ve Zaman Sınıfları, Rastgele Sayı Üretme, toString() Metodu, Diziler ve Sıralama Algoritmaları, 2D/3D Diziler, Alt Fonksiyon Kullanımı, Java’da Dosya (I/O) İşlemleri, Enum, Strings, Advanced Java API, Çoklu Okuyuculu Programlama, Jenerik, Lambda İfadeleri, Modüller, Swing, JShell’e Giriş."
+    code: 'BIL1202',
+    name: 'Nesne Tabanlı Programlama',
+    credits: '4-3.5-6',
+    content:
+      'Dışarıdan Veri Girişi, Statik ve Dinamik Metodlar, Matematik ve Zaman Sınıfları, Rastgele Sayı Üretme, toString() Metodu, Diziler ve Sıralama Algoritmaları, 2D/3D Diziler, Alt Fonksiyon Kullanımı, Java’da Dosya (I/O) İşlemleri, Enum, Strings, Advanced Java API, Çoklu Okuyuculu Programlama, Jenerik, Lambda İfadeleri, Modüller, Swing, JShell’e Giriş.',
   },
   {
-    "code": "BIL2005",
-    "name": "Veri Yapıları",
-    "credits": "4-3.5-5",
-    "content": "Java’nın Temelleri ve Nesneye Dayalı Programlama, Algoritma Analizi ve Karmaşıklık, Dizi Veri Yapısı ve Basit Sıralama, Bağlı Listeler, Stack ve Queue, Özyineleme, Gelişmiş Sıralama Algoritmaları, Tree ve Graf Veri Yapıları, Hash Tabloları, Heap, Ara Sınav."
+    code: 'BIL2005',
+    name: 'Veri Yapıları',
+    credits: '4-3.5-5',
+    content:
+      'Java’nın Temelleri ve Nesneye Dayalı Programlama, Algoritma Analizi ve Karmaşıklık, Dizi Veri Yapısı ve Basit Sıralama, Bağlı Listeler, Stack ve Queue, Özyineleme, Gelişmiş Sıralama Algoritmaları, Tree ve Graf Veri Yapıları, Hash Tabloları, Heap, Ara Sınav.',
   },
   {
-    "code": "BIL2006",
-    "name": "Bilgisayar Mimarisi",
-    "credits": "4-3.5-4",
-    "content": "Komut Seti Tasarımı, Bilgisayar Aritmetiği, Denetleyici ve Veri Yolu Tasarımı, Bellek Sistemleri, G/Ç Sistemleri, Kesmeler, Boru Hatları, Performans Analizi ve Bilgisayar Mimarisi. Dönem Projesi."
+    code: 'BIL2006',
+    name: 'Bilgisayar Mimarisi',
+    credits: '4-3.5-4',
+    content:
+      'Komut Seti Tasarımı, Bilgisayar Aritmetiği, Denetleyici ve Veri Yolu Tasarımı, Bellek Sistemleri, G/Ç Sistemleri, Kesmeler, Boru Hatları, Performans Analizi ve Bilgisayar Mimarisi. Dönem Projesi.',
   },
   {
-    "code": "BIL2007",
-    "name": "Sayısal Elektronik",
-    "credits": "4-3.5-7",
-    "content": "Sayısal Kavramlar, Sayı Sistemleri, Mantık Devreleri, Boole İfadelerinin Sadeleştirilmesi, Bileşimsel Devreler, Ardışıl Devreler, Flip-Flop’lar, Sayıcılar, Kaydediciler, Bellek Birimleri, A/D ve D/A Dönüştürücüler."
+    code: 'BIL2007',
+    name: 'Sayısal Elektronik',
+    credits: '4-3.5-7',
+    content:
+      'Sayısal Kavramlar, Sayı Sistemleri, Mantık Devreleri, Boole İfadelerinin Sadeleştirilmesi, Bileşimsel Devreler, Ardışıl Devreler, Flip-Flop’lar, Sayıcılar, Kaydediciler, Bellek Birimleri, A/D ve D/A Dönüştürücüler.',
   },
   {
-    "code": "BIL2109",
-    "name": "Ayrık İşlemsel Yapılar",
-    "credits": "3-3-5",
-    "content": "Önermeler, Kümeler, Tamsayılar, Fonksiyonlar, Matrisler, Algoritmalar ve Özyineleme, Algoritma Analizi, Matematiksel Çıkarım, Graf Teorisi ve Uygulamaları."
+    code: 'BIL2109',
+    name: 'Ayrık İşlemsel Yapılar',
+    credits: '3-3-5',
+    content:
+      'Önermeler, Kümeler, Tamsayılar, Fonksiyonlar, Matrisler, Algoritmalar ve Özyineleme, Algoritma Analizi, Matematiksel Çıkarım, Graf Teorisi ve Uygulamaları.',
   },
   {
-    "code": "BIL2111",
-    "name": "Mesleki İngilizce - I",
-    "credits": "2-2-2",
-    "content": "Bilgisayar bilimlerinde İngilizce okuma ve yazma becerileri; orijinal makaleler, program kodları ve referans metinlerden uyarlamalar."
+    code: 'BIL2111',
+    name: 'Mesleki İngilizce - I',
+    credits: '2-2-2',
+    content:
+      'Bilgisayar bilimlerinde İngilizce okuma ve yazma becerileri; orijinal makaleler, program kodları ve referans metinlerden uyarlamalar.',
   },
   {
-    "code": "BIL2112",
-    "name": "Mesleki İngilizce - II",
-    "credits": "2-2-2",
-    "content": "Modül 5–8 arası İnternet ara yüzleri, Yaratıcı yazılımlar, ICT’de programlama ve iş olanakları, Geleceğin bilgisayarları konuları; Web, e-mail, grafik, multimedia, video oyunları, yeni teknolojiler."
+    code: 'BIL2112',
+    name: 'Mesleki İngilizce - II',
+    credits: '2-2-2',
+    content:
+      'Modül 5–8 arası İnternet ara yüzleri, Yaratıcı yazılımlar, ICT’de programlama ve iş olanakları, Geleceğin bilgisayarları konuları; Web, e-mail, grafik, multimedia, video oyunları, yeni teknolojiler.',
   },
   {
-    "code": "BIL2114",
-    "name": "Otomata Teorisi",
-    "credits": "3-3-5",
-    "content": "Otomata teorisi, durum makineleri, soyutlama, kapılı (DFA/NFA) ve itirazlı otomatalar, Turing makineleri, P/NP teorisi ve bilgisayar mimarisi ilişkisi."
+    code: 'BIL2114',
+    name: 'Otomata Teorisi',
+    credits: '3-3-5',
+    content:
+      'Otomata teorisi, durum makineleri, soyutlama, kapılı (DFA/NFA) ve itirazlı otomatalar, Turing makineleri, P/NP teorisi ve bilgisayar mimarisi ilişkisi.',
   },
   {
-    "code": "BIL2203",
-    "name": "Nesne Tabanlı Analiz ve Tasarım",
-    "credits": "3-3-5",
-    "content": "Nesne ve sınıf kavramı, kurucular/yıkıcılar, kalıtım, çok biçimlilik, UML, operatör yükleme, dosyalar, kütüphane kullanımı."
+    code: 'BIL2203',
+    name: 'Nesne Tabanlı Analiz ve Tasarım',
+    credits: '3-3-5',
+    content:
+      'Nesne ve sınıf kavramı, kurucular/yıkıcılar, kalıtım, çok biçimlilik, UML, operatör yükleme, dosyalar, kütüphane kullanımı.',
   },
   {
-    "code": "BIL2208",
-    "name": "Elektronik Devreler Tasarım",
-    "credits": "4-3.5-3",
-    "content": "Yarıiletken malzemeler, diyotlar, BJT, OPAMP’lar, FET’ler, transistörler, uygulamalı devre tasarımları."
+    code: 'BIL2208',
+    name: 'Elektronik Devreler Tasarım',
+    credits: '4-3.5-3',
+    content:
+      'Yarıiletken malzemeler, diyotlar, BJT, OPAMP’lar, FET’ler, transistörler, uygulamalı devre tasarımları.',
   },
   {
-    "code": "BIL3000",
-    "name": "Mühendislik Projesi",
-    "credits": "2-1-4",
-    "content": "Uygulamalı proje çalışmasının planlanması, yürütülmesi ve raporlanması; içerik ders akışına göre belirlenir."
+    code: 'BIL3000',
+    name: 'Mühendislik Projesi',
+    credits: '2-1-4',
+    content:
+      'Uygulamalı proje çalışmasının planlanması, yürütülmesi ve raporlanması; içerik ders akışına göre belirlenir.',
   },
   {
-    "code": "BIL3001",
-    "name": "Programlama Dilleri",
-    "credits": "3-3-5",
-    "content": "Programlama paradigmaları, dil tanımı ve çevirimi, bağlama, kapsam, altprogramlar, nesne-yönelim, istisna işleme, fonksiyonel ve mantıksal programlama."
+    code: 'BIL3001',
+    name: 'Programlama Dilleri',
+    credits: '3-3-5',
+    content:
+      'Programlama paradigmaları, dil tanımı ve çevirimi, bağlama, kapsam, altprogramlar, nesne-yönelim, istisna işleme, fonksiyonel ve mantıksal programlama.',
   },
   {
-    "code": "BIL3002",
-    "name": "Veritabanı Tasarım ve Uygulama",
-    "credits": "4-3.5-5",
-    "content": "Proje planlama, gereksinim analizi, tasarım, kodlama, bakım ve destek aşamaları ile pratik veritabanı uygulamaları geliştirme."
+    code: 'BIL3002',
+    name: 'Veritabanı Tasarım ve Uygulama',
+    credits: '4-3.5-5',
+    content:
+      'Proje planlama, gereksinim analizi, tasarım, kodlama, bakım ve destek aşamaları ile pratik veritabanı uygulamaları geliştirme.',
   },
   {
-    "code": "BIL3003",
-    "name": "İşletim Sistemleri",
-    "credits": "3-3-5",
-    "content": "İşletim sistemi mimarisi, proses/iş parçacığı yönetimi, senkronizasyon, ölü kilitlenmeler, CPU planlama, bellek yönetimi, sanal bellek, dosya sistemleri, disk planlaması."
+    code: 'BIL3003',
+    name: 'İşletim Sistemleri',
+    credits: '3-3-5',
+    content:
+      'İşletim sistemi mimarisi, proses/iş parçacığı yönetimi, senkronizasyon, ölü kilitlenmeler, CPU planlama, bellek yönetimi, sanal bellek, dosya sistemleri, disk planlaması.',
   },
   {
-    "code": "BIL3004",
-    "name": "Yazılım Mühendisliği",
-    "credits": "3-3-5",
-    "content": "Yazılım mühendisliği temelleri, proje yönetimi, gereksinim analizi, tasarım, geliştirme, test, dağıtım, kalite ve bakım süreçleri, yazılım geliştirme modelleri."
+    code: 'BIL3004',
+    name: 'Yazılım Mühendisliği',
+    credits: '3-3-5',
+    content:
+      'Yazılım mühendisliği temelleri, proje yönetimi, gereksinim analizi, tasarım, geliştirme, test, dağıtım, kalite ve bakım süreçleri, yazılım geliştirme modelleri.',
   },
   {
-    "code": "BIL3007",
-    "name": "Mikroişlemciler",
-    "credits": "3-3-4",
-    "content": "Intel 8086 mimarisi, CPU kaydedicileri, ALU, bayraklar, mikroişlemci komutları, assembler, bellek adresleme, G/Ç, kesmeliler, mikrobilgisayar programlama."
+    code: 'BIL3007',
+    name: 'Mikroişlemciler',
+    credits: '3-3-4',
+    content:
+      'Intel 8086 mimarisi, CPU kaydedicileri, ALU, bayraklar, mikroişlemci komutları, assembler, bellek adresleme, G/Ç, kesmeliler, mikrobilgisayar programlama.',
   },
   {
-    "code": "BIL3009",
-    "name": "Veritabanlarına Giriş",
-    "credits": "3-3-4",
-    "content": "Veritabanı kavramları, ilişkisel modeller, SQL temelleri, tablo oluşturma, sorgulama, güncelleme, indeksler ve temel optimizasyon."
+    code: 'BIL3009',
+    name: 'Veritabanlarına Giriş',
+    credits: '3-3-4',
+    content:
+      'Veritabanı kavramları, ilişkisel modeller, SQL temelleri, tablo oluşturma, sorgulama, güncelleme, indeksler ve temel optimizasyon.',
   },
   {
-    "code": "BIL3010",
-    "name": "Sinyaller ve Sistemler",
-    "credits": "3-3-4",
-    "content": "Sistem teorisi, sürekli/ayrık zamanlı sistemler, konvolüsyon, Laplace ve Z-dönüşümleri, Fourier serisi ve dönüşümü, filtreleme, bant genişliği, ayrık Fourier dönüşümü."
+    code: 'BIL3010',
+    name: 'Sinyaller ve Sistemler',
+    credits: '3-3-4',
+    content:
+      'Sistem teorisi, sürekli/ayrık zamanlı sistemler, konvolüsyon, Laplace ve Z-dönüşümleri, Fourier serisi ve dönüşümü, filtreleme, bant genişliği, ayrık Fourier dönüşümü.',
   },
   {
-    "code": "BIL3012",
-    "name": "Görsel Programlama",
-    "credits": "4-3.5-4",
-    "content": "Form kontrolleri, dialoglar, stream yapıları, hata yönetimi, grafik komutları, ADO.NET ile veri tabanı erişimi, LINQ, ORM araçları, Entity Framework, raporlama, setup hazırlama."
+    code: 'BIL3012',
+    name: 'Görsel Programlama',
+    credits: '4-3.5-4',
+    content:
+      'Form kontrolleri, dialoglar, stream yapıları, hata yönetimi, grafik komutları, ADO.NET ile veri tabanı erişimi, LINQ, ORM araçları, Entity Framework, raporlama, setup hazırlama.',
   },
   {
-    "code": "BIL3013",
-    "name": "Olasılık ve İstatistik",
-    "credits": "3-3-4",
-    "content": "Örnek uzaylar, olaylar, olasılık kuralları, koşullu olasılık, bağımsızlık, rastgele değişkenler, momentler, dağılımlar, tanımlayıcı istatistikler, tahmin, güven aralıkları, hipotez testleri, regresyon ve korelasyon."
+    code: 'BIL3013',
+    name: 'Olasılık ve İstatistik',
+    credits: '3-3-4',
+    content:
+      'Örnek uzaylar, olaylar, olasılık kuralları, koşullu olasılık, bağımsızlık, rastgele değişkenler, momentler, dağılımlar, tanımlayıcı istatistikler, tahmin, güven aralıkları, hipotez testleri, regresyon ve korelasyon.',
   },
   {
-    "code": "BIL3014",
-    "name": "Algoritma Analizi",
-    "credits": "3-3-4",
-    "content": "Asimptotik notasyonlar, böl ve yönet, hashing, graf algoritmaları, dengeli ağaçlar, dinamik programlama, geri dönüş, P, NP, NP-Tam problemler."
+    code: 'BIL3014',
+    name: 'Algoritma Analizi',
+    credits: '3-3-4',
+    content:
+      'Asimptotik notasyonlar, böl ve yönet, hashing, graf algoritmaları, dengeli ağaçlar, dinamik programlama, geri dönüş, P, NP, NP-Tam problemler.',
   },
   {
-    "code": "BIL3106",
-    "name": "İnternet Teknolojileri",
-    "credits": "3-3-5",
-    "content": "Web temelleri, HTML, CSS, JavaScript, jQuery, AJAX, JSON, web tasarımı araçları ve temel seviyede uygulamalar."
+    code: 'BIL3106',
+    name: 'İnternet Teknolojileri',
+    credits: '3-3-5',
+    content:
+      'Web temelleri, HTML, CSS, JavaScript, jQuery, AJAX, JSON, web tasarımı araçları ve temel seviyede uygulamalar.',
   },
   {
-    "code": "BIL3108",
-    "name": "Bilgisayar Ağları",
-    "credits": "3-3-5",
-    "content": "Veri iletişimi, ağ türleri, katmanlı model, iletişim protokolleri, TCP/IP protokol paketi."
+    code: 'BIL3108',
+    name: 'Bilgisayar Ağları',
+    credits: '3-3-5',
+    content:
+      'Veri iletişimi, ağ türleri, katmanlı model, iletişim protokolleri, TCP/IP protokol paketi.',
   },
   {
-    "code": "BIL4000",
-    "name": "Bitirme Ödevi - I",
-    "credits": "3-1.5-4",
-    "content": "Bilgisayar mühendisliği konularında pratik (deneysel) proje çalışması, literatür taraması, tasarım, uygulama, raporlama ve savunma."
+    code: 'BIL4000',
+    name: 'Bitirme Ödevi - I',
+    credits: '3-1.5-4',
+    content:
+      'Bilgisayar mühendisliği konularında pratik (deneysel) proje çalışması, literatür taraması, tasarım, uygulama, raporlama ve savunma.',
   },
   {
-    "code": "BIL4002",
-    "name": "Mühendislik Ekonomisi",
-    "credits": "2-2-3",
-    "content": "Mühendislik ekonomik analiz, maliyet ve gelir değerlendirmesi, yatırım karar modelleri."
+    code: 'BIL4002',
+    name: 'Mühendislik Ekonomisi',
+    credits: '2-2-3',
+    content:
+      'Mühendislik ekonomik analiz, maliyet ve gelir değerlendirmesi, yatırım karar modelleri.',
   },
   {
-    "code": "BIL4005",
-    "name": "İnternet Programlama",
-    "credits": "4-3.5-5",
-    "content": "UDP/TCP soket programlama, web servisler, JSON/XML işleme, güncel framework’lerde istemci-sunucu uygulamaları."
+    code: 'BIL4005',
+    name: 'İnternet Programlama',
+    credits: '4-3.5-5',
+    content:
+      'UDP/TCP soket programlama, web servisler, JSON/XML işleme, güncel framework’lerde istemci-sunucu uygulamaları.',
   },
   {
-    "code": "BIL4007",
-    "name": "Robot Programlama",
-    "credits": "3-2.5-4",
-    "content": "Robot sistemlerine giriş, koordinat sistemleri, hareket programlama, simülasyon yazılımları, endüstriyel uygulama örnekleri."
+    code: 'BIL4007',
+    name: 'Robot Programlama',
+    credits: '3-2.5-4',
+    content:
+      'Robot sistemlerine giriş, koordinat sistemleri, hareket programlama, simülasyon yazılımları, endüstriyel uygulama örnekleri.',
   },
   {
-    "code": "BIL4008",
-    "name": "Makine Öğrenmesi",
-    "credits": "3-3-4",
-    "content": "Yapay zekâ, regresyon, sinir ağları, SVM, kümeleme, boyut indirgeme, anormallik tespiti, öneri sistemleri, büyük veri ile ML uygulamaları."
+    code: 'BIL4008',
+    name: 'Makine Öğrenmesi',
+    credits: '3-3-4',
+    content:
+      'Yapay zekâ, regresyon, sinir ağları, SVM, kümeleme, boyut indirgeme, anormallik tespiti, öneri sistemleri, büyük veri ile ML uygulamaları.',
   },
   {
-    "code": "BIL4010",
-    "name": "Paralel Programlama",
-    "credits": "3-3-4",
-    "content": "Paralel donanım mimarileri, Flynn taksonomisi, MPI ve OpenMP uygulamaları."
-  }
-]
+    code: 'BIL4010',
+    name: 'Paralel Programlama',
+    credits: '3-3-4',
+    content:
+      'Paralel donanım mimarileri, Flynn taksonomisi, MPI ve OpenMP uygulamaları.',
+  },
+];

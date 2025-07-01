@@ -11,7 +11,14 @@ import { Card, Statistic } from 'antd';
  * @param {string} prefix - Değerin önüne eklenecek metin
  * @param {string} valueStyle - Değer stil objesi
  */
-export default function StatsCard({ title, value, icon, suffix, prefix, valueStyle }) {
+export default function StatsCard({
+  title,
+  value,
+  icon,
+  suffix,
+  prefix,
+  valueStyle,
+}) {
   return (
     <Card hoverable className="fade-in">
       <Statistic

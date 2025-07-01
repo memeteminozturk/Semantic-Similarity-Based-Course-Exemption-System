@@ -1,5 +1,5 @@
 // src/components/wizard/steps/TranscriptStep.jsx
-import React, { useState, forwardRef, useImperativeHandle } from "react";
+import React, { useState, forwardRef, useImperativeHandle } from 'react';
 import {
   Upload,
   Progress,
@@ -12,18 +12,22 @@ import {
   Checkbox,
   Modal,
   message,
-} from "antd";
+} from 'antd';
 import {
   InboxOutlined,
   CheckCircleOutlined,
   PlusOutlined,
-} from "@ant-design/icons";
-import { usePdfParser } from "@/hooks/usePdfParser";
-import { useDispatch, useSelector } from "react-redux";
-import { setCourses, setTranscriptFile, setTranscriptFileBlob } from "@/redux/wizardSlice";
+} from '@ant-design/icons';
+import { usePdfParser } from '@/hooks/usePdfParser';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setCourses,
+  setTranscriptFile,
+  setTranscriptFileBlob,
+} from '@/redux/wizardSlice';
 import { useFileStore } from '@/contexts/FileStoreContext';
-import ManualCourseForm from "@/components/ManualCourseForm";
-import { nanoid } from "nanoid";
+import ManualCourseForm from '@/components/ManualCourseForm';
+import { nanoid } from 'nanoid';
 
 const { Dragger } = Upload;
 const { Text } = Typography;
@@ -32,8 +36,8 @@ const TranscriptStep = forwardRef((props, ref) => {
   const [messageApi, contextHolder] = message.useMessage();
   const dispatch = useDispatch();
   const { setTranscriptFile: storeTranscriptFile } = useFileStore();
-  const transcriptFile = useSelector((state) => state.wizard.transcriptFile);
-  const courses = useSelector((state) => state.wizard.courses);
+  const transcriptFile = useSelector(state => state.wizard.transcriptFile);
+  const courses = useSelector(state => state.wizard.courses);
 
   // Custom hooks for PDF parsing
   const [coursesToInclude, setCoursesToInclude] = useState([]);
@@ -55,14 +59,14 @@ const TranscriptStep = forwardRef((props, ref) => {
     isLoading: isParsingTranscript,
     progress: transcriptProgress,
   } = usePdfParser({
-    onSuccess: (parsedCourses) => {
+    onSuccess: parsedCourses => {
       // Filter courses to only include those with comment "G"
-      const filteredCourses = parsedCourses.filter((course) => {
-        return course.comments && course.comments.includes("G");
+      const filteredCourses = parsedCourses.filter(course => {
+        return course.comments && course.comments.includes('G');
       });
 
       // Add IDs and selection state to each course
-      const coursesWithIds = filteredCourses.map((course) => ({
+      const coursesWithIds = filteredCourses.map(course => ({
         ...course,
         id: nanoid(),
         selected: true, // Default all courses are selected
@@ -74,8 +78,8 @@ const TranscriptStep = forwardRef((props, ref) => {
       // Create a serializable file representation
       dispatch(
         setTranscriptFile({
-          name: "transkript.pdf",
-          type: "application/pdf",
+          name: 'transkript.pdf',
+          type: 'application/pdf',
           lastModified: new Date().getTime(),
           size: 0, // We don't have the actual size here, but adding for consistency
         })
@@ -106,8 +110,7 @@ const TranscriptStep = forwardRef((props, ref) => {
   };
   return (
     <div>
-      {contextHolder}
-      {" "}
+      {contextHolder}{' '}
       <Alert
         message="Dersleri Ekleyin"
         description="Transkriptinizi yükleyin veya dersleri manuel olarak ekleyerek muafiyet başvurusu için ilerleyebilirsiniz."
@@ -115,21 +118,25 @@ const TranscriptStep = forwardRef((props, ref) => {
         showIcon
         style={{ marginBottom: 24 }}
       />
-      <div style={{ display: "flex", marginBottom: "24px" }}>
+      <div style={{ display: 'flex', marginBottom: '24px' }}>
         <Card
           title="Transkript Dosyası"
           extra={
-            transcriptFile && <CheckCircleOutlined style={{ color: "green" }} />
+            transcriptFile && <CheckCircleOutlined style={{ color: 'green' }} />
           }
-          style={{ width: "100%" }}
-        >          <Dragger
+          style={{ width: '100%' }}
+        >
+          {' '}
+          <Dragger
             accept=".pdf"
             showUploadList={false}
-            beforeUpload={(file) => {
+            beforeUpload={file => {
               // File size validation (25MB = 25 * 1024 * 1024 bytes)
               const maxSize = 25 * 1024 * 1024; // 25MB
               if (file.size > maxSize) {
-                messageApi.error(`Dosya boyutu çok büyük! Maksimum: 25MB, Yüklenen: ${(file.size / (1024*1024)).toFixed(1)}MB`);
+                messageApi.error(
+                  `Dosya boyutu çok büyük! Maksimum: 25MB, Yüklenen: ${(file.size / (1024 * 1024)).toFixed(1)}MB`
+                );
                 return false;
               }
               return true;
@@ -137,39 +144,40 @@ const TranscriptStep = forwardRef((props, ref) => {
             customRequest={({ file }) => {
               // Store the actual file for email attachments
               storeTranscriptFile(file);
-              
+
               // Also store file info in Redux for UI
-              dispatch(setTranscriptFile({
-                name: file.name,
-                type: file.type,
-                size: file.size,
-                lastModified: file.lastModified,
-              }));
-              
+              dispatch(
+                setTranscriptFile({
+                  name: file.name,
+                  type: file.type,
+                  size: file.size,
+                  lastModified: file.lastModified,
+                })
+              );
+
               // Parse the transcript
               parseTranscript(file);
             }}
             disabled={isParsingTranscript || !!transcriptFile}
           >
             <p>
-              <InboxOutlined style={{ fontSize: 32, color: "#40a9ff" }} />
+              <InboxOutlined style={{ fontSize: 32, color: '#40a9ff' }} />
             </p>
             <p>
               {transcriptFile ? (
                 <Text strong>
-                  Yüklendi: {transcriptFile.name || "transkript.pdf"}
+                  Yüklendi: {transcriptFile.name || 'transkript.pdf'}
                 </Text>
               ) : (
                 "Transkript PDF'ini buraya sürükleyin veya tıklayın"
               )}
             </p>
             {!transcriptFile && (
-              <p style={{ fontSize: "12px", color: "#999" }}>
+              <p style={{ fontSize: '12px', color: '#999' }}>
                 PDF formatında belge yükleyin
               </p>
             )}
           </Dragger>
-
           {isParsingTranscript && (
             <Progress
               percent={transcriptProgress}
@@ -179,7 +187,7 @@ const TranscriptStep = forwardRef((props, ref) => {
           )}
         </Card>
       </div>
-      {/* Manuel Ders Ekleme Bölümü */}{" "}
+      {/* Manuel Ders Ekleme Bölümü */}{' '}
       <Card
         title="Muafiyet İçin Dersler"
         style={{ marginBottom: 24 }}
@@ -193,7 +201,7 @@ const TranscriptStep = forwardRef((props, ref) => {
           </Button>
         }
       >
-        {" "}
+        {' '}
         {allCourses.length > 0 ? (
           <>
             <Alert
@@ -215,32 +223,32 @@ const TranscriptStep = forwardRef((props, ref) => {
                 defaultPageSize: 10,
                 total: allCourses.length,
                 showSizeChanger: true,
-                pageSizeOptions: ["10", "20", "50", "100"],
+                pageSizeOptions: ['10', '20', '50', '100'],
                 showTotal: (total, range) =>
                   `${range[0]}-${range[1]} / ${total} ders`,
               }}
               columns={[
                 {
-                  title: "Ders Kodu",
-                  dataIndex: "code",
-                  key: "code",
+                  title: 'Ders Kodu',
+                  dataIndex: 'code',
+                  key: 'code',
                 },
                 {
-                  title: "Ders Adı",
-                  dataIndex: "name",
-                  key: "name",
+                  title: 'Ders Adı',
+                  dataIndex: 'name',
+                  key: 'name',
                 },
                 {
-                  title: "Kredi (T-U-K)",
-                  key: "credit",
+                  title: 'Kredi (T-U-K)',
+                  key: 'credit',
                   render: (_, record) => (
                     <span>{`${record.theory}-${record.practice}-${record.nationalCredit}`}</span>
                   ),
                 },
                 {
-                  title: "Not",
-                  dataIndex: "grade",
-                  key: "grade",
+                  title: 'Not',
+                  dataIndex: 'grade',
+                  key: 'grade',
                 },
               ]}
             />
@@ -252,11 +260,11 @@ const TranscriptStep = forwardRef((props, ref) => {
             type="info"
             showIcon
           />
-        )}{" "}
+        )}{' '}
       </Card>
       {/* İşleme sırasında gösterilen spinner */}
       {isParsingTranscript && (
-        <div style={{ textAlign: "center", padding: "30px 0" }}>
+        <div style={{ textAlign: 'center', padding: '30px 0' }}>
           <Spin size="large" />
           <p style={{ marginTop: 16 }}>
             Belgeler işleniyor, lütfen bekleyin...
@@ -277,12 +285,12 @@ const TranscriptStep = forwardRef((props, ref) => {
           type="info"
           showIcon
           style={{ marginBottom: 16 }}
-        />{" "}
+        />{' '}
         <ManualCourseForm onSuccess={() => setIsModalVisible(false)} />
       </Modal>
       {/* İşleme sırasında gösterilen spinner */}
       {isParsingTranscript && (
-        <div style={{ textAlign: "center", padding: "30px 0" }}>
+        <div style={{ textAlign: 'center', padding: '30px 0' }}>
           <Spin size="large" />
           <p style={{ marginTop: 16 }}>
             Belgeler işleniyor, lütfen bekleyin...

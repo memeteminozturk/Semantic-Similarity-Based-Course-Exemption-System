@@ -13,7 +13,7 @@ const { Content } = Layout;
 export default function AppLayout({ children }) {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  
+
   // İlk render sonrası mounted olarak işaretle
   useEffect(() => {
     setMounted(true);
@@ -29,15 +29,13 @@ export default function AppLayout({ children }) {
       <AntApp>
         <Layout className="app-layout">
           <Header />
-          
+
           <Content className="app-content">
-            <div className="content-container">
-              {children}
-            </div>
+            <div className="content-container">{children}</div>
           </Content>
-          
+
           <Footer />
-          
+
           <FloatButton
             icon={<QuestionCircleOutlined />}
             tooltip="Yardım"

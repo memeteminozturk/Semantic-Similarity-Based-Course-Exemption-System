@@ -14,12 +14,14 @@ export default function PageHeader({ title, subtitle, extra }) {
   return (
     <div className="fade-in mb-4">
       <div className="d-flex justify-content-between align-items-center mb-2">
-        <Title level={2} style={{ margin: 0 }}>{title}</Title>
+        <Title level={2} style={{ margin: 0 }}>
+          {title}
+        </Title>
         {extra && <div>{extra}</div>}
       </div>
-      
+
       {subtitle && <Text type="secondary">{subtitle}</Text>}
-      
+
       <Divider style={{ marginTop: 16, marginBottom: 24 }} />
     </div>
   );

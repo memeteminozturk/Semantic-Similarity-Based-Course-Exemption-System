@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 
 const wizardSlice = createSlice({
-  name: 'wizard',  initialState: {
+  name: 'wizard',
+  initialState: {
     activeStep: 0,
     // Belge Yükleme
     transcriptFile: null,
@@ -47,7 +48,8 @@ const wizardSlice = createSlice({
       if (state.activeStep > 0) {
         state.activeStep -= 1;
       }
-    },    setTranscriptFile(state, action) {
+    },
+    setTranscriptFile(state, action) {
       // Ensure we only store serializable properties
       const { name, type, size, lastModified } = action.payload;
       state.transcriptFile = { name, type, size, lastModified };
@@ -55,10 +57,12 @@ const wizardSlice = createSlice({
     setTranscriptFileBlob(state, action) {
       // Store file blob for email attachments (we'll use a file store outside Redux)
       // This action is mainly for tracking that we have the file
-      state.transcriptFileBlob = action.payload ? { 
-        name: action.payload.name, 
-        size: action.payload.size 
-      } : null;
+      state.transcriptFileBlob = action.payload
+        ? {
+            name: action.payload.name,
+            size: action.payload.size,
+          }
+        : null;
     },
     setOldContentsFile(state, action) {
       // Ensure we only store serializable properties
@@ -73,10 +77,12 @@ const wizardSlice = createSlice({
     setOldContentsFileBlob(state, action) {
       // Store file blob for email attachments (we'll use a file store outside Redux)
       // This action is mainly for tracking that we have the file
-      state.oldContentsFileBlob = action.payload ? { 
-        name: action.payload.name, 
-        size: action.payload.size 
-      } : null;
+      state.oldContentsFileBlob = action.payload
+        ? {
+            name: action.payload.name,
+            size: action.payload.size,
+          }
+        : null;
     },
     setCourses(state, action) {
       state.courses = action.payload.map(course => ({
@@ -85,9 +91,9 @@ const wizardSlice = createSlice({
       }));
     },
     addCourse(state, action) {
-      const newCourse = { 
-        ...action.payload, 
-        id: action.payload.id || nanoid() 
+      const newCourse = {
+        ...action.payload,
+        id: action.payload.id || nanoid(),
       };
       state.courses.push(newCourse);
     },
@@ -99,12 +105,15 @@ const wizardSlice = createSlice({
       }
     },
     deleteCourse(state, action) {
-      state.courses = state.courses.filter(course => course.id !== action.payload);
+      state.courses = state.courses.filter(
+        course => course.id !== action.payload
+      );
     },
     setCourseContent(state, action) {
       const { courseId, content } = action.payload;
       state.courseContents[courseId] = content;
-    },    setMatches(state, action) {
+    },
+    setMatches(state, action) {
       state.matches = action.payload;
       // Otomatik olarak yüksek skorlu eşleşmeleri seç
       state.selectedMatches = action.payload
@@ -116,15 +125,18 @@ const wizardSlice = createSlice({
       // action.payload should be { results: [{ ext_code, candidates: [{ int_code, percent, exempt }] }] }
       const autoMatchResults = action.payload.results;
       const processedMatches = [];
-      
+
       autoMatchResults.forEach(result => {
         const course = state.courses.find(c => c.code === result.ext_code);
         if (!course) return;
-        
+
         // Find the best match (highest percent)
-        const bestMatch = result.candidates.reduce((best, current) => 
-          current.percent > (best?.percent || 0) ? current : best, null);
-          
+        const bestMatch = result.candidates.reduce(
+          (best, current) =>
+            current.percent > (best?.percent || 0) ? current : best,
+          null
+        );
+
         if (bestMatch) {
           processedMatches.push({
             id: course.id,
@@ -134,11 +146,11 @@ const wizardSlice = createSlice({
             matchedName: bestMatch.int_code, // Will be enriched with actual name in component
             score: bestMatch.percent / 100, // Convert percentage to decimal
             isEligible: bestMatch.exempt,
-            allCandidates: result.candidates // Store all candidates for detailed view
+            allCandidates: result.candidates, // Store all candidates for detailed view
           });
         }
       });
-      
+
       state.matches = processedMatches;
       // Auto-select eligible matches
       state.selectedMatches = processedMatches
@@ -148,7 +160,7 @@ const wizardSlice = createSlice({
     toggleMatchSelection(state, action) {
       const matchId = action.payload;
       const index = state.selectedMatches.indexOf(matchId);
-      
+
       if (index === -1) {
         state.selectedMatches.push(matchId);
       } else {
@@ -157,7 +169,8 @@ const wizardSlice = createSlice({
     },
     setPersonalInfo(state, action) {
       state.personalInfo = { ...state.personalInfo, ...action.payload };
-    },    setGeneratedPdf(state, action) {
+    },
+    setGeneratedPdf(state, action) {
       // Store only serializable properties of the PDF blob
       // We'll store the binary data as a base64 string if needed
       if (action.payload instanceof Blob) {
@@ -180,7 +193,8 @@ const wizardSlice = createSlice({
     setIntSelection(state, action) {
       const { courseId, intCode } = action.payload;
       state.intSelections[courseId] = intCode;
-    },    resetWizard(state) {
+    },
+    resetWizard(state) {
       return {
         ...state,
         activeStep: 0,
@@ -203,8 +217,8 @@ const wizardSlice = createSlice({
         isSuccess: false,
         errorMessage: '',
       };
-    }
-  }
+    },
+  },
 });
 
 export const {

@@ -1,8 +1,8 @@
 // src/components/ManualCourseForm.jsx
-import React from "react";
-import { useForm, Controller } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+import React from 'react';
+import { useForm, Controller } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Form,
   Input,
@@ -13,32 +13,32 @@ import {
   Typography,
   Card,
   Alert,
-} from "antd";
-import { useDispatch, useSelector } from "react-redux";
-import { addCourse } from "@/redux/wizardSlice";
-import { nanoid } from "nanoid";
+} from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import { addCourse } from '@/redux/wizardSlice';
+import { nanoid } from 'nanoid';
 
 const { Text } = Typography;
 
 // Ders formu için Zod şeması
 const courseSchema = z.object({
-  code: z.string().trim().min(1, "Ders kodu gerekli"),
-  name: z.string().trim().min(1, "Ders adı gerekli"),
+  code: z.string().trim().min(1, 'Ders kodu gerekli'),
+  name: z.string().trim().min(1, 'Ders adı gerekli'),
   theory: z
     .number()
     .int()
     .nonnegative()
-    .refine((val) => val >= 0, {
-      message: "Teori kredisi 0 veya üzeri olmalı",
+    .refine(val => val >= 0, {
+      message: 'Teori kredisi 0 veya üzeri olmalı',
     }),
   practice: z
     .number()
     .int()
     .nonnegative()
-    .refine((val) => val >= 0, {
-      message: "Uygulama kredisi 0 veya üzeri olmalı",
+    .refine(val => val >= 0, {
+      message: 'Uygulama kredisi 0 veya üzeri olmalı',
     }),
-  letterGrade: z.string().min(1, "Harf notu gerekli"),
+  letterGrade: z.string().min(1, 'Harf notu gerekli'),
 });
 
 export default function ManualCourseForm({ onSuccess }) {
@@ -51,37 +51,37 @@ export default function ManualCourseForm({ onSuccess }) {
     formState: { isSubmitting, errors },
   } = useForm({
     defaultValues: {
-      code: "",
-      name: "",
+      code: '',
+      name: '',
       theory: 0,
       practice: 0,
-      letterGrade: "AA",
+      letterGrade: 'AA',
     },
     resolver: zodResolver(courseSchema),
-    mode: "onBlur",
+    mode: 'onBlur',
   });
 
   // T ve U değerlerini izle ve AKTS'yi otomatik hesapla
-  const theory = watch("theory") || 0;
-  const practice = watch("practice") || 0;
+  const theory = watch('theory') || 0;
+  const practice = watch('practice') || 0;
   const calculatedCredit = theory * 1 + practice * 0.5;
   // Türk harf notu seçenekleri - sadece geçer notlar (muafiyet için)
   const letterGradeOptions = [
-    { value: "AA", label: "AA" },
-    { value: "BA", label: "BA" },
-    { value: "BB", label: "BB" },
-    { value: "CB", label: "CB" },
-    { value: "CC", label: "CC" },
-    { value: "DC", label: "DC" },
-    { value: "DD", label: "DD" },
-    { value: "YT", label: "YT" },
-    { value: "MU", label: "MU" },
+    { value: 'AA', label: 'AA' },
+    { value: 'BA', label: 'BA' },
+    { value: 'BB', label: 'BB' },
+    { value: 'CB', label: 'CB' },
+    { value: 'CC', label: 'CC' },
+    { value: 'DC', label: 'DC' },
+    { value: 'DD', label: 'DD' },
+    { value: 'YT', label: 'YT' },
+    { value: 'MU', label: 'MU' },
   ];
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     // Harf notuna göre durum belirleme
-    const getStatusFromGrade = (grade) => {
-      const passingGrades = ["AA", "BA", "BB", "CB", "CC", "DC", "DD", "YT"];
-      return passingGrades.includes(grade) ? "Başarılı" : "Başarısız";
+    const getStatusFromGrade = grade => {
+      const passingGrades = ['AA', 'BA', 'BB', 'CB', 'CC', 'DC', 'DD', 'YT'];
+      return passingGrades.includes(grade) ? 'Başarılı' : 'Başarısız';
     };
 
     // Wizard formatına uygun veri yapısı oluştur
@@ -119,7 +119,7 @@ export default function ManualCourseForm({ onSuccess }) {
         <Form.Item
           label="Ders Kodu"
           required
-          validateStatus={errors.code ? "error" : ""}
+          validateStatus={errors.code ? 'error' : ''}
           help={errors.code?.message}
         >
           <Controller
@@ -133,7 +133,7 @@ export default function ManualCourseForm({ onSuccess }) {
         <Form.Item
           label="Ders Adı"
           required
-          validateStatus={errors.name ? "error" : ""}
+          validateStatus={errors.name ? 'error' : ''}
           help={errors.name?.message}
         >
           <Controller
@@ -143,12 +143,12 @@ export default function ManualCourseForm({ onSuccess }) {
               <Input {...field} placeholder="Örn. Algoritma ve Programlama" />
             )}
           />
-        </Form.Item>{" "}
-        <div style={{ display: "flex", gap: "8px", marginBottom: "16px" }}>
+        </Form.Item>{' '}
+        <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
           <Form.Item
             label="Teori Kredisi (T)"
             required
-            validateStatus={errors.theory ? "error" : ""}
+            validateStatus={errors.theory ? 'error' : ''}
             help={errors.theory?.message}
             style={{ flex: 1 }}
           >
@@ -159,7 +159,7 @@ export default function ManualCourseForm({ onSuccess }) {
                 <InputNumber
                   {...field}
                   min={0}
-                  style={{ width: "100%" }}
+                  style={{ width: '100%' }}
                   placeholder="0"
                 />
               )}
@@ -169,7 +169,7 @@ export default function ManualCourseForm({ onSuccess }) {
           <Form.Item
             label="Uygulama Kredisi (U)"
             required
-            validateStatus={errors.practice ? "error" : ""}
+            validateStatus={errors.practice ? 'error' : ''}
             help={errors.practice?.message}
             style={{ flex: 1 }}
           >
@@ -180,60 +180,60 @@ export default function ManualCourseForm({ onSuccess }) {
                 <InputNumber
                   {...field}
                   min={0}
-                  style={{ width: "100%" }}
+                  style={{ width: '100%' }}
                   placeholder="0"
                 />
               )}
             />
           </Form.Item>
-        </div>{" "}
+        </div>{' '}
         {/* AKTS otomatik hesaplama gösterimi */}
         <Card
           size="small"
           style={{
-            marginBottom: "24px",
-            backgroundColor: "rgba(16, 185, 129, 0.05)",
-            borderColor: "#10b981",
+            marginBottom: '24px',
+            backgroundColor: 'rgba(16, 185, 129, 0.05)',
+            borderColor: '#10b981',
           }}
-          bodyStyle={{ padding: "12px 16px" }}
+          bodyStyle={{ padding: '12px 16px' }}
         >
           <div
             style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
             }}
           >
             <div>
-              <Text strong style={{ color: "#059669" }}>
+              <Text strong style={{ color: '#059669' }}>
                 Ulusal Kredi (Otomatik Hesaplanır)
               </Text>
               <br />
-              <Text type="secondary" style={{ fontSize: "12px" }}>
+              <Text type="secondary" style={{ fontSize: '12px' }}>
                 Hesaplama: ({theory} × 1) + ({practice} × 0.5)
               </Text>
             </div>
-            <div style={{ textAlign: "right" }}>
+            <div style={{ textAlign: 'right' }}>
               <Text
                 style={{
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                  color: "#059669",
+                  fontSize: '20px',
+                  fontWeight: 'bold',
+                  color: '#059669',
                 }}
               >
                 {calculatedCredit.toFixed(1)}
               </Text>
               <br />
-              <Text type="secondary" style={{ fontSize: "11px" }}>
+              <Text type="secondary" style={{ fontSize: '11px' }}>
                 kredi
               </Text>
             </div>
           </div>
-        </Card>{" "}
+        </Card>{' '}
         <Form.Item
           label="Harf Notu"
           required
-          validateStatus={errors.letterGrade ? "error" : ""}
+          validateStatus={errors.letterGrade ? 'error' : ''}
           help={errors.letterGrade?.message}
         >
           <Controller
@@ -243,7 +243,7 @@ export default function ManualCourseForm({ onSuccess }) {
               <Select
                 {...field}
                 options={letterGradeOptions}
-                style={{ width: "100%" }}
+                style={{ width: '100%' }}
                 placeholder="Harf notunuzu seçin"
               />
             )}
@@ -253,7 +253,7 @@ export default function ManualCourseForm({ onSuccess }) {
           type="primary"
           htmlType="submit"
           loading={isSubmitting}
-          style={{ width: "100%" }}
+          style={{ width: '100%' }}
         >
           Dersi Ekle
         </Button>

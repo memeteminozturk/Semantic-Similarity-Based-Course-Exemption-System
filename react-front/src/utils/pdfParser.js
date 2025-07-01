@@ -9,10 +9,10 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
 // Yardımcı regex sabitleri
 // Ders kodu: herhangi bir harf veya rakam kombinasyonu, 5–9 karakter uzunluğunda
 const COURSE_CODE_RE = /^[A-ZÇĞİÖŞÜ0-9]{5,9}$/;
-const STATUS_RE = /^[ZS]$/;              // Z = Zorunlu, S = Seçmeli
+const STATUS_RE = /^[ZS]$/; // Z = Zorunlu, S = Seçmeli
 
 // "3,5" → 3.5  "-"/"" → null
-const toNumber = (str) => {
+const toNumber = str => {
   if (!str || str === '-') return null;
   return Number(str.replace(',', '.'));
 };
@@ -31,18 +31,15 @@ export async function parsePdf(file) {
   for (let pageIdx = 1; pageIdx <= pdf.numPages; pageIdx++) {
     const page = await pdf.getPage(pageIdx);
     const textContent = await page.getTextContent();
-    const rawText = textContent.items.map((i) => i.str).join(' ');
+    const rawText = textContent.items.map(i => i.str).join(' ');
 
     // 1) Ön‑temizlik: parantezli İngilizce açıklamaları kaldır, fazla boşlukları sadeleştir
     let cleaned = rawText
-      .replace(/\([^)]*\)/g, ' ')  // (…)
-      .replace(/\s+/g, ' ');        // tüm fazla boşlukları tek boşluğa indir
+      .replace(/\([^)]*\)/g, ' ') // (…)
+      .replace(/\s+/g, ' '); // tüm fazla boşlukları tek boşluğa indir
 
     // 2) Satır kes: herhangi bir ders kodu görüldüğünde yeni satır aç
-    cleaned = cleaned.replace(
-      / (?=[A-ZÇĞİÖŞÜ0-9]{5,9}\s)/g,
-      '\n'
-    );
+    cleaned = cleaned.replace(/ (?=[A-ZÇĞİÖŞÜ0-9]{5,9}\s)/g, '\n');
 
     const lines = cleaned.split('\n');
     for (const line of lines) {
@@ -71,8 +68,8 @@ function parseRow(line) {
   if (!tokens.length) return null;
 
   // 2) Sütunları sırayla çek
-  const status = tokens.shift();      // Z | S
-  const language = tokens.shift();      // Tr | En | …
+  const status = tokens.shift(); // Z | S
+  const language = tokens.shift(); // Tr | En | …
   const theory = toNumber(tokens.shift());
   const practice = toNumber(tokens.shift());
   const uk = toNumber(tokens.shift());

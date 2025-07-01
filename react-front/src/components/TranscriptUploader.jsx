@@ -1,6 +1,15 @@
 // src/components/TranscriptUploader.jsx
 import React from 'react';
-import { Upload, Progress, Button, message as antdMessage, Card, Space, Alert, Typography } from 'antd';
+import {
+  Upload,
+  Progress,
+  Button,
+  message as antdMessage,
+  Card,
+  Space,
+  Alert,
+  Typography,
+} from 'antd';
 import { InboxOutlined, ArrowRightOutlined } from '@ant-design/icons';
 import { usePdfParser } from '@/hooks/usePdfParser';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,19 +25,19 @@ export default function TranscriptUploader() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { mutate, isLoading, progress } = usePdfParser({
-    onSuccess: (courses) => {
+    onSuccess: courses => {
       // Redux state doğrudan güncelleniyor
       dispatch(setCourses(courses));
       console.log('Parsed courses:', courses);
       messageApi.success('Transkript başarıyla işlendi.');
     },
-    onError: (err) => {
+    onError: err => {
       console.error('Parse hatası:', err);
       messageApi.error('Transkript işlenirken hata oluştu.');
-    }
+    },
   });
 
-  const courses = useSelector((state) => state.courses.list);
+  const courses = useSelector(state => state.courses.list);
   return (
     <>
       {contextHolder}
@@ -40,7 +49,9 @@ export default function TranscriptUploader() {
           description={
             <div>
               <Typography.Paragraph>
-                Ders muafiyeti için başvuru yapmak ister misiniz? Yeni sihirbazımız ile transkriptinizi yükleyin, ders içeriklerinizi girin ve otomatik dilekçe oluşturun.
+                Ders muafiyeti için başvuru yapmak ister misiniz? Yeni
+                sihirbazımız ile transkriptinizi yükleyin, ders içeriklerinizi
+                girin ve otomatik dilekçe oluşturun.
               </Typography.Paragraph>
               <Button
                 type="primary"

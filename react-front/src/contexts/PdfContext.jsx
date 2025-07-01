@@ -6,46 +6,42 @@ import React, { createContext, useContext, useState } from 'react';
 const PdfContext = createContext();
 
 export function PdfProvider({ children }) {
-    const [pdfBlob, setPdfBlob] = useState(null);
-    const [pdfInfo, setPdfInfo] = useState(null);
+  const [pdfBlob, setPdfBlob] = useState(null);
+  const [pdfInfo, setPdfInfo] = useState(null);
 
-    const setPdf = (blob) => {
-        setPdfBlob(blob);
-        setPdfInfo({
-            type: blob.type,
-            size: blob.size,
-            generated: true,
-            timestamp: new Date().toISOString()
-        });
-    };
+  const setPdf = blob => {
+    setPdfBlob(blob);
+    setPdfInfo({
+      type: blob.type,
+      size: blob.size,
+      generated: true,
+      timestamp: new Date().toISOString(),
+    });
+  };
 
-    const clearPdf = () => {
-        if (pdfBlob) {
-            URL.revokeObjectURL(pdfBlob);
-        }
-        setPdfBlob(null);
-        setPdfInfo(null);
-    };
+  const clearPdf = () => {
+    if (pdfBlob) {
+      URL.revokeObjectURL(pdfBlob);
+    }
+    setPdfBlob(null);
+    setPdfInfo(null);
+  };
 
-    const value = {
-        pdfBlob,
-        pdfInfo,
-        setPdf,
-        clearPdf,
-        hasGeneratedPdf: !!pdfBlob
-    };
+  const value = {
+    pdfBlob,
+    pdfInfo,
+    setPdf,
+    clearPdf,
+    hasGeneratedPdf: !!pdfBlob,
+  };
 
-    return (
-        <PdfContext.Provider value={value}>
-            {children}
-        </PdfContext.Provider>
-    );
+  return <PdfContext.Provider value={value}>{children}</PdfContext.Provider>;
 }
 
 export function usePdf() {
-    const context = useContext(PdfContext);
-    if (!context) {
-        throw new Error('usePdf must be used within a PdfProvider');
-    }
-    return context;
+  const context = useContext(PdfContext);
+  if (!context) {
+    throw new Error('usePdf must be used within a PdfProvider');
+  }
+  return context;
 }

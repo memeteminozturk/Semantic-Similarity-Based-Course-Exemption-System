@@ -1,7 +1,22 @@
 // src/components/CourseTable.jsx
 import React, { useState } from 'react';
-import { Table, Input, InputNumber, Button, Popconfirm, Form, Modal, Space } from 'antd';
-import { PlusOutlined, EditOutlined, SaveOutlined, CloseOutlined, DeleteOutlined } from '@ant-design/icons';
+import {
+  Table,
+  Input,
+  InputNumber,
+  Button,
+  Popconfirm,
+  Form,
+  Modal,
+  Space,
+} from 'antd';
+import {
+  PlusOutlined,
+  EditOutlined,
+  SaveOutlined,
+  CloseOutlined,
+  DeleteOutlined,
+} from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
 import { addCourse, updateCourse, deleteCourse } from '@/redux/courseSlice';
 import { nanoid } from 'nanoid';
@@ -13,7 +28,7 @@ export default function CourseTable({ courses }) {
   const [editingKey, setEditingKey] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const isEditing = (record) => record.id === editingKey;
+  const isEditing = record => record.id === editingKey;
 
   const showAddModal = () => setIsModalVisible(true);
   const handleAddCancel = () => {
@@ -30,14 +45,14 @@ export default function CourseTable({ courses }) {
     }
   };
 
-  const edit = (record) => {
+  const edit = record => {
     form.setFieldsValue({ name: '', ects: 0, grade: 0, ...record });
     setEditingKey(record.id);
   };
 
   const cancel = () => setEditingKey('');
 
-  const save = async (id) => {
+  const save = async id => {
     try {
       const row = await form.validateFields();
       dispatch(updateCourse({ id, data: row }));
@@ -58,7 +73,11 @@ export default function CourseTable({ courses }) {
         const editable = isEditing(record);
         return editable ? (
           <Space>
-            <Button icon={<SaveOutlined />} onClick={() => save(record.id)} type="text" />
+            <Button
+              icon={<SaveOutlined />}
+              onClick={() => save(record.id)}
+              type="text"
+            />
             <Popconfirm title="İptal edilsin mi?" onConfirm={cancel}>
               <Button icon={<CloseOutlined />} type="text" />
             </Popconfirm>
@@ -83,11 +102,11 @@ export default function CourseTable({ courses }) {
     },
   ];
 
-  const mergedColumns = columns.map((col) => {
+  const mergedColumns = columns.map(col => {
     if (!col.editable) return col;
     return {
       ...col,
-      onCell: (record) => ({
+      onCell: record => ({
         record,
         inputType: col.dataIndex === 'name' ? 'text' : 'number',
         dataIndex: col.dataIndex,
@@ -97,8 +116,17 @@ export default function CourseTable({ courses }) {
     };
   });
 
-  const EditableCell = ({ editing, dataIndex, title, inputType, record, children, ...restProps }) => {
-    const inputNode = inputType === 'number' ? <InputNumber min={0} /> : <Input />;
+  const EditableCell = ({
+    editing,
+    dataIndex,
+    title,
+    inputType,
+    record,
+    children,
+    ...restProps
+  }) => {
+    const inputNode =
+      inputType === 'number' ? <InputNumber min={0} /> : <Input />;
     return (
       <td {...restProps}>
         {editing ? (
@@ -118,30 +146,38 @@ export default function CourseTable({ courses }) {
 
   return (
     <>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem' }}>
-        <h3 style={{ margin: 0 }}>
-          Ders Listesi ({courses.length})
-        </h3>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '1rem',
+        }}
+      >
+        <h3 style={{ margin: 0 }}>Ders Listesi ({courses.length})</h3>
         <Button type="primary" icon={<PlusOutlined />} onClick={showAddModal}>
           Ders Ekle
         </Button>
       </div>
       <Form form={form} component={false}>
         <Table
-          components={{ body: { cell: EditableCell } }}          bordered
+          components={{ body: { cell: EditableCell } }}
+          bordered
           dataSource={courses}
           columns={mergedColumns}
           rowKey="id"
           locale={{ emptyText: 'Gösterilecek ders yok' }}
-          pagination={{ 
+          pagination={{
             onChange: cancel,
-            pageSize: 8, 
+            pageSize: 8,
             showSizeChanger: true,
             pageSizeOptions: ['8', '12', '16', '20'],
-            showTotal: (total, range) => `${range[0]}-${range[1]} / ${total} ders`
+            showTotal: (total, range) =>
+              `${range[0]}-${range[1]} / ${total} ders`,
           }}
         />
-      </Form>      <Modal
+      </Form>{' '}
+      <Modal
         title="Yeni Ders Ekle"
         open={isModalVisible}
         onOk={handleAdd}
@@ -153,24 +189,21 @@ export default function CourseTable({ courses }) {
           <Form.Item
             name="name"
             label="Ders Adı"
-            rules={[{ required: true, message: 'Ders adı gerekli' }]
-            }
+            rules={[{ required: true, message: 'Ders adı gerekli' }]}
           >
             <Input placeholder="Örn. Algoritma ve Programlama" />
           </Form.Item>
           <Form.Item
             name="ects"
             label="AKTS"
-            rules={[{ required: true, message: 'AKTS 0 veya üzeri olmalı' }]
-            }
+            rules={[{ required: true, message: 'AKTS 0 veya üzeri olmalı' }]}
           >
             <InputNumber min={0} style={{ width: '100%' }} />
           </Form.Item>
           <Form.Item
             name="grade"
             label="Harf Notu (0-100)"
-            rules={[{ required: true, message: 'Not 0-100 arası olmalı' }]
-            }
+            rules={[{ required: true, message: 'Not 0-100 arası olmalı' }]}
           >
             <InputNumber min={0} max={100} style={{ width: '100%' }} />
           </Form.Item>
